@@ -76,8 +76,11 @@ footer a{
     transition: 1.5s;
 }
 
-.grid-container div{
+.project-container{
     /* background: red; */
+    box-shadow: 2px 3px 7px rgba(0,0,0,0.2);
+    border-radius: 0.5rem;
+    overflow: hidden;
 }
 
 .grid-image-container{
@@ -86,8 +89,6 @@ footer a{
     overflow: hidden;
     display: flex;
     align-items: center;
-    
-    border-radius: 0.3rem;
 }
 
 .grid-image-container a{
