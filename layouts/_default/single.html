@@ -1,4 +1,7 @@
 {{ define "main" }}
+<div id="single-hero">
+    {{ with .Params.image }}<img src="{{ . }}"/>{{ end }}
+</div>
 <div class="grid-container full">
     <div id="single-content">
     {{ .Content }}
