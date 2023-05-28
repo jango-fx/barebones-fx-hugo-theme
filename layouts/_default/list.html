@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="grid-container">
-    {{ range .Pages.ByPublishDate.Reverse }}
-    <div>
+    {{ range (.Pages.ByParam "year").Reverse }}
+    <div class="project-container">
         <div class="grid-image-container">
           <a href="{{ .Permalink }}">
             {{ with .Params.image }}<img src="{{ . }}" class="grid-image"/>{{ end }}
