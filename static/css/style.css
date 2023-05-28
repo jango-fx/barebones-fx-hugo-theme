@@ -1,0 +1,19 @@
+.portfolio-hero{
+    max-width: 720px;
+    width: 30%;
+}
+
+.portfolios-wrapper{
+    background-color: red;
+    display: grid | inline-grid;
+    grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+    justify-items: center;
+}
+
+.portfolio-container{
+    background-color: aqua;
+    grid-column-start: 1;
+    grid-column-end: span col4-start;
+    float: left;
+    margin: 10px;
+}

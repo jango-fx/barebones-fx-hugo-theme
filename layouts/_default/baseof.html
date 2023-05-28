@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    {{ with .Site.Title }}<title>{{ . }}</title>{{ end }}
+    {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+    {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+
+    <!-- Mobile Specific Metas
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="{{ "css/normalize.css" | absURL }}">
+    <link rel="stylesheet" href="{{ "css/barebones.css" | absURL }}">
+    <link rel="stylesheet" href="{{ "css/jango.css" | absURL }}">
+    <!-- Favicon
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    {{ with .Site.Params.favicon }}<link rel="icon" type="image/png" href="{{ . | absURL}}">{{ end }}
+
+</head>
+<body>
+
+    <!-- Primary Page Layout
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="grid-container full">
+        <header>
+            <div id="title-container">
+                {{ with .Site.Title }} {{ . }} {{ end }}
+            </div>
+            
+            <div id="nav-container">
+                {{ $currentPage := trim .Page.RelPermalink "/" }}
+                {{ with .Site.Params.navlinks }}
+                {{ range . }}
+                    {{ $currentLink :=  index (split .url "/") 0 }}
+                    <a href="{{ absURL .url }}" {{ if eq $currentLink $currentPage}} class="active" {{ end }} >{{ .name }}</a>
+                {{ end }}
+                {{ end }}
+            </div>
+        </header>
+    </div>
+
+    <section class="content-main">
+        {{- block "main" . }}{{- end }}
+    </section>
+
+    <footer>  
+        <a {{ with .Site.Params.navlinks }} {{ range . }} {{ if .imprint }} href="{{ .url | absURL }}" {{ end }} {{ end }} {{ end }}>{{ with .Site.Params.copyright }} {{ . }} {{ end }}</a>
+    </footer>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
