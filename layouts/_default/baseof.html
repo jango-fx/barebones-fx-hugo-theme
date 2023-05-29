@@ -43,9 +43,10 @@
 
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="{{ "css/normalize.css" | absURL }}"> <link
-    rel="stylesheet" href="{{ "css/barebones.css" | absURL }}"> <link
-    rel="stylesheet" href="{{ "css/jango.css" | absURL }}">
+    <link rel="stylesheet" href="{{ "css/normalize.css" | absURL }}">
+    <link rel="stylesheet" href="{{ "css/barebones.css" | absURL }}">
+    <link rel="stylesheet" href="{{ "css/jango.css" | absURL }}">
+
     <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     {{ with .Site.Params.favicon }}
@@ -53,6 +54,11 @@
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="{{ . | absURL}}" />
     {{ end }}
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@slightlyoff/lite-vimeo@0.1.1/lite-vimeo.js"></script>
+    <!-- <script src="https://raw.githubusercontent.com/paulirish/lite-youtube-embed/master/src/lite-yt-embed.js"></script>
+    <link href="https://raw.githubusercontent.com/paulirish/lite-youtube-embed/master/src/lite-yt-embed.css"><link> -->
+
   </head>
   <body>
     <!-- Primary Page Layout
