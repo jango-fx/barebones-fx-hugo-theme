@@ -3,10 +3,38 @@
 <head>
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta charset="utf-8">
-    {{ with .Site.Title }}<title>{{ . }}</title>{{ end }}
-    {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
-    {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+    <meta charset="utf-8" />
+    {{ with .Site.Title }}
+    <title>{{ . }}</title>
+    <meta property="og:title" content="{{ . }}" />
+    <meta name="twitter:title" value="{{ . }}" />
+    {{ end }}
+    {{ with .Site.Params.description }}
+    <meta name="description" content="{{ . }}" />
+    <meta property="og:description" content="{{ . }}" />
+    <meta name="twitter:description" value="{{ . }}" />
+    {{ end }}
+    {{ with .Site.Params.author }}
+    <meta name="author" content="{{ . }}" />
+    {{ end }}
+
+    <!-- Additional Unfurling
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    {{ with .Params.image }}
+    <meta property="og:image" content="https://picsum.photos/600/400" />
+    <meta name="twitter:image" content="https://picsum.photos/600/400" />
+    {{ end }}
+
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta name="twitter:url" value="{{ .Permalink }}" />
+    <meta name="twitter:domain" value="{{ .Site.BaseURL }}" />
+    <meta name="twitter:label1" value="{{ .Params.title }}" />
+    <!-- <meta name="twitter:data1" value="twitter:data1" />
+    <meta name="twitter:label2" value="twitter:label2" />
+    <meta name="twitter:data2" value="twitter:data2" /> -->
 
     <!-- Mobile Specific Metas
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
