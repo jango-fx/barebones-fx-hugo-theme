@@ -25,8 +25,8 @@
     <meta name="twitter:card" content="summary_large_image">
 
     {{ with .Params.image }}
-    <meta property="og:image" content="https://picsum.photos/600/400" />
-    <meta name="twitter:image" content="https://picsum.photos/600/400" />
+    <meta property="og:image" content="{{ . }}" />
+    <meta name="twitter:image" content="{{ . }}" />
     {{ end }}
 
     <meta property="og:url" content="{{ .Permalink }}" />
