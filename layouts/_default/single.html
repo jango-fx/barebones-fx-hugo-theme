@@ -4,12 +4,22 @@
 </div>
 <div class="grid-container full">
     <div id="single-content">
+        <h1>{{ .Params.title }}{{ with .Params.year }}<span class="year"> ({{ . }})</span>{{ end }}</h1>
         {{ .Content }}
-    </div>
-    <div>
-        {{ range .Params.tags }}
-        <div style="background-color: hsl(210, 100%, 65%); border-radius: 1rem; height: 1.5rem; float: left; padding:0rem 1rem 0.5rem 1rem; font-size: 1.2rem; margin: 0px 2px;color:#333">{{ . }}</div>
+        {{ with .Params.partner}}
+        {{ $length := len . }}
+        <p class="partner">with
+            {{ range . }}
+            <span>{{ . }}</span>{{ if gt $length 1 }},{{ end }}
+            {{ end }}
+        </p>
         {{ end }}
+        <div class="tag-list">
+            {{ range .Params.tags }}
+            <div class="tag">{{ . }}</div>
+            {{ end }}
+        </div>
     </div>
+    
 </div>
 {{ end }}
