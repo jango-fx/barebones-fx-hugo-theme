@@ -131,3 +131,7 @@ footer a{
     min-height: 100%;
     width: 100%;
 }
+
+.image-credits {
+    font-size: 0.8em;
+}
