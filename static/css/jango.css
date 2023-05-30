@@ -22,8 +22,8 @@ h6 {
 
 header {
   /* background: lightblue; */
+
   display: flex;
-  width: 100%;
   align-items: flex-end;
 }
 
@@ -37,6 +37,7 @@ footer {
   padding-bottom: 0.5rem;
   text-align: right;
   font-size: 1rem;
+  z-index: -1;
 }
 
 footer a {
@@ -46,16 +47,22 @@ footer a {
 
 #title-container {
   /* background: greenyellow; */
-  flex-grow: 1;
-  text-align: left;
-
+  /* flex-grow: 1;
+  text-align: left; */
+  width: 102px;
+  flex-shrink: 0;
   font-weight: 500;
   font-size: 1.5em;
+  margin-right: 0.75em;
+  height: 1.5em;
+}
+
 #custom-header-outer{
   /* background: dodgerblue; */
   width: 100%;
   container-type: inline-size;
 }
+
 #custom-header-container{
   /* background: purple; */
   width: auto;
@@ -67,12 +74,24 @@ footer a {
   font-size: 0.9em;
   /* font-size: 1.6vw; */
 }
+
+
+@container (max-inline-size: 300px) {
+  #custom-header-container{
+    /* background: green; */
+    font-size: min(0.9em, 2.0vw);
+  }
 }
 
 #nav-container {
   /* background: orange; */
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  width: auto;
+  min-width: 126px;
+  /* max-height: 30px; */
+  flex-shrink: 0;
   text-align: right;
+  font-weight: 600;
 }
 #nav-container a {
   color: var(--text-color-softer);
@@ -85,15 +104,15 @@ footer a {
 }
 
 #nav-container a.active {
-  font-weight: 500;
+  font-weight: 900;
+  /* text-decoration: underline; */
   color: var(--text-color-normal);
 }
 
 /* --- list.html --------------------------------- */
 
 .grid-container {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 1rem 2rem;
   transition: 1.5s;
 }
 
