@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {{ if .IsPage }}<base href="{{ (index .Ancestors 0).Permalink }}">{{ end }}
+    <!-- Set Page Base for Images
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    {{ $page := . }}
+    {{ with .File }} 
+      {{ if (eq .BaseFileName "index") }}<base href="{{ $page.Permalink }}">
+      {{ else if $page.IsPage }}<base href="{{ (index $page.Ancestors 0).Permalink }}">
+      {{ end }}
+    {{ end }}
+
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8" />
@@ -71,7 +79,7 @@
             {{ partial "custom-header.html" . }}
           </div>
         </div>
-        <div id="nav-container">
+          <div id="nav-container">
           {{ $currentPage := trim .Page.RelPermalink "/" }} {{ with
           .Site.Params.navlinks }} {{ range . }} {{ $currentLink := index (split
           .url "/") 0 }}
