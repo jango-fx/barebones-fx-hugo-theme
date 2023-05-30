@@ -51,6 +51,22 @@ footer a {
 
   font-weight: 500;
   font-size: 1.5em;
+#custom-header-outer{
+  /* background: dodgerblue; */
+  width: 100%;
+  container-type: inline-size;
+}
+#custom-header-container{
+  /* background: purple; */
+  width: auto;
+  flex-grow: 2;
+  flex-shrink: 2;
+  max-width: max(0px, calc((100% - 120px)*999));
+  overflow: hidden;
+  height: 1.5em;
+  font-size: 0.9em;
+  /* font-size: 1.6vw; */
+}
 }
 
 #nav-container {

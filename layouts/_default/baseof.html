@@ -58,7 +58,7 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/@slightlyoff/lite-vimeo@0.1.1/lite-vimeo.js"></script>
     <!-- <script src="https://raw.githubusercontent.com/paulirish/lite-youtube-embed/master/src/lite-yt-embed.js"></script>
     <link href="https://raw.githubusercontent.com/paulirish/lite-youtube-embed/master/src/lite-yt-embed.css"><link> -->
-
+    {{ partial "custom-head.html" . }}
   </head>
   <body>
     <!-- Primary Page Layout
@@ -66,7 +66,11 @@
     <div class="grid-container full">
       <header>
         <div id="title-container">{{ with .Site.Title }} {{ . }} {{ end }}</div>
-
+        <div id="custom-header-outer">
+          <div id="custom-header-container">
+            {{ partial "custom-header.html" . }}
+          </div>
+        </div>
         <div id="nav-container">
           {{ $currentPage := trim .Page.RelPermalink "/" }} {{ with
           .Site.Params.navlinks }} {{ range . }} {{ $currentLink := index (split
