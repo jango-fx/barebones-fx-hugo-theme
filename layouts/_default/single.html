@@ -6,14 +6,22 @@
     <div id="single-content">
         <h1>{{ .Params.title }}{{ with .Params.year }}<span class="year"> ({{ . }})</span>{{ end }}</h1>
         {{ .Content }}
-        {{ with .Params.partner}}
-        {{ $length := len . }}
+
+        
+        {{ if .Params.partner }}
         <p class="partner">with
-            {{ range . }}
-            <span>{{ . }}</span>{{ if gt $length 1 }},{{ end }}
+            {{ $length := (sub (len .Params.partner) 1) }}
+            {{ range $i, $p := .Params.partner }}
+                {{ if isset $p "url"}}
+                <span><a href="{{ $p.url }}">{{ $p.name }}</a></span>{{ if lt $i $length }},{{ end }}
+                {{ else }}
+                <span>{{ $p.name }}</span>{{ if lt $i $length }},{{ end }}
+                {{ end }}
             {{ end }}
         </p>
         {{ end }}
+
+
         <div class="tag-list">
             {{ range .Params.tags }}
             <div class="tag">{{ . }}</div>
