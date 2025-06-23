@@ -24,10 +24,12 @@
 
         <div class="tag-list">
             {{ range .Params.tags }}
-            <div class="tag">{{ . }}</div>
+            
+            <div class="tag"><a href="{{ relURL (printf "%s%s" "tags/" (. | urlize)) }}">{{ . }}</a></div>
             {{ end }}
         </div>
     </div>
     
 </div>
+
 {{ end }}
