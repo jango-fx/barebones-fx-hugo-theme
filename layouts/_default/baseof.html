@@ -93,7 +93,7 @@
     <footer>
       <a
         {{ with .Site.Params.navlinks }} {{ range . }} {{ if .imprint }} href="{{ .url | absURL }}" {{ end }} {{ end }} {{ end }}
-        >{{ with .Site.Params.copyright }} {{ . }} {{ end }}</a
+        >© {{ now.Year }}{{ with .Site.Params.copyright }} {{ . }} {{ end }}</a
       >
     </footer>
     <!-- End Document
