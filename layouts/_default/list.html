@@ -4,6 +4,9 @@
     <div class="project-container">
         <div class="grid-image-container">
           <a href="{{ .Permalink }}">
+            <b>{{ .Params.title }}</b>
+          </a>
+          <a class="grid-image-overlay" href="{{ .Permalink }}">
             {{ with .Params.image }}<img src="{{ . }}" class="grid-image"/>{{ end }}
           </a>
         </div>

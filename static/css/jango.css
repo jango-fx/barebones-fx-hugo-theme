@@ -129,10 +129,16 @@ footer a {
   overflow: hidden;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .grid-image-container a {
   height: 100%;
+  margin: auto;
+  }
+
+.grid-image-overlay{
+  position: absolute;
 }
 
 .grid-image {
