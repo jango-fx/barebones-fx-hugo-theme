@@ -57,6 +57,11 @@ footer a {
   height: 1.5em;
 }
 
+#title-container a{
+  text-decoration: none;
+  color: inherit;
+}
+
 #custom-header-outer{
   /* background: dodgerblue; */
   width: 100%;
