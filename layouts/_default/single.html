@@ -5,9 +5,6 @@
 <div class="grid-container full">
     <div id="single-content">
         <h1>{{ .Params.title }}{{ with .Params.year }}<span class="year"> ({{ . }})</span>{{ end }}</h1>
-        {{ .Content }}
-
-        
         {{ if .Params.partner }}
         <p class="partner">with
             {{ $length := (sub (len .Params.partner) 1) }}
@@ -20,6 +17,9 @@
             {{ end }}
         </p>
         {{ end }}
+        {{ .Content }}
+
+        
 
 
         <div class="tag-list">
