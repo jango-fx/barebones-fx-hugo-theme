@@ -1,5 +1,5 @@
 {{ if .Get `url` }}
-<p class="image-credits">Image © by <a href="{{ .Get `url`}}" >{{ .Get `by`}}.</a></p>
+<p class="image-credits">Images © by <a href="{{ .Get `url`}}" >{{ .Get `by`}}.</a></p>
 {{ else }}
-<p class="image-credits">Image © by {{ .Get `by`}}.</p>
+<p class="image-credits">Images © by {{ .Get `by`}}.</p>
 {{ end }}
