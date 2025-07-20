@@ -166,7 +166,7 @@ footer a {
   text-align: left;
 }
 
-#single-content img {
+#single-content img, #single-content video {
   max-width: 100%;
 }
 

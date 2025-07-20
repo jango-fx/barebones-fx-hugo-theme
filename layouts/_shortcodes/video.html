@@ -1,0 +1,8 @@
+{{$url := (.Get `src`)}}
+{{$start := (.Get `start`)}}
+<video controls autoplay >
+    <source src="{{ $url }}{{with $start}}#t={{.}}{{end}}" />
+</video>
+
+<!-- autoplay="false" loop="true" -->
+<!-- controls -->
