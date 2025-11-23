@@ -122,7 +122,6 @@ footer a {
 }
 
 .project-container {
-  /* background: red; */
   box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   overflow: hidden;
@@ -176,6 +175,8 @@ footer a {
 
 #single-content img, #single-content video {
   max-width: 100%;
+  display: block;
+  margin: 8px auto;
 }
 
 #single-content h1 .year{
