@@ -1,17 +1,25 @@
 {{ define "main" }}
 <div class="grid-container">
-    {{ range (.Pages.ByParam "year").Reverse }}
-    <div class="project-container{{if .Draft}} draft{{end}}">
-        <div class="grid-image-container">
-          <a href="{{ .Permalink }}">
-            <b>{{ .Params.title }}</b>
-          </a>
-          <a class="grid-image-overlay" href="{{ .Permalink }}">
-            {{ with .Params.image }}<img src="{{ . }}" class="grid-image"/>{{ end }}
-          </a>
-        </div>
-        <!-- Caption -->
-      </div>
-    {{ end }}
+  {{ range (.Pages.ByParam "year").Reverse }}
+  <div class="project-container{{if .Draft}} draft{{end}}">
+    <div class="grid-image-container">
+      <a href="{{ .Permalink }}">
+        <b>{{ .Params.title }}</b>
+      </a>
+      <a class="grid-image-overlay" href="{{ .Permalink }}">
+        {{ $imgURL := absURL "" }} 
+        {{ if strings.Contains .Params.image "https"}}
+          {{ $imgURL := .Params.image }}
+        <img src="{{ absURL $imgURL }}" class="grid-image" />
+        {{else}}
+          {{ $path := printf "%s%s" "work/" .Params.image }}
+          {{ $imgURL := absURL $path }}
+        <img src="{{ absURL $imgURL }}" class="grid-image" />
+        {{end}}
+      </a>
+    </div>
+    <!-- Caption -->
+  </div>
+  {{ end }}
 </div>
 {{ end }}
