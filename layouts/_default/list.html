@@ -10,11 +10,11 @@
         {{ $imgURL := absURL "" }} 
         {{ if strings.Contains .Params.image "https"}}
           {{ $imgURL := .Params.image }}
-        <img src="{{ absURL $imgURL }}" class="grid-image" />
+        <img src="{{ absURL $imgURL }}" class="grid-image" loading="lazy" />
         {{else}}
           {{ $path := printf "%s%s" "work/" .Params.image }}
           {{ $imgURL := absURL $path }}
-        <img src="{{ absURL $imgURL }}" class="grid-image" />
+        <img src="{{ absURL $imgURL }}" class="grid-image" loading="lazy" />
         {{end}}
       </a>
     </div>
