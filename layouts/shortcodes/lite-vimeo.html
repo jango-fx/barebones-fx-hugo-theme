@@ -1,2 +1,0 @@
-{{ $id := index (split (.Get `url`) "/") (sub (len (split (.Get `url`) "/")) 1) }}
-<lite-vimeo videoid="{{ $id }}"></lite-vimeo>
