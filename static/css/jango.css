@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway");
+@import url("https://fonts.bunny.net/css?family=Raleway");
 
 html {
   /* height: 100%; */
@@ -55,6 +55,11 @@ footer a {
   font-size: 1.5em;
   margin-right: 0.75em;
   height: 1.5em;
+}
+
+#title-container a{
+  text-decoration: none;
+  color: inherit;
 }
 
 #custom-header-outer{
@@ -117,10 +122,17 @@ footer a {
 }
 
 .project-container {
-  /* background: red; */
   box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   overflow: hidden;
+}
+
+.project-container.draft {
+  background-color: rgba(255, 20, 145, 0.4);
+}
+
+.project-container.draft img{
+  opacity: 0.7;
 }
 
 .grid-image-container {
@@ -129,10 +141,16 @@ footer a {
   overflow: hidden;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .grid-image-container a {
   height: 100%;
+  margin: auto;
+  }
+
+.grid-image-overlay{
+  position: absolute;
 }
 
 .grid-image {
@@ -155,8 +173,10 @@ footer a {
   text-align: left;
 }
 
-#single-content img {
+#single-content img, #single-content video {
   max-width: 100%;
+  display: block;
+  margin: 8px auto;
 }
 
 #single-content h1 .year{
