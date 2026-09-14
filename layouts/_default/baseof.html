@@ -73,7 +73,8 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="grid-container full">
       <header>
-        <div id="title-container">{{ with .Site.Title }} {{ . }} {{ end }}</div>
+        {{ $url := .Site.BaseURL }}
+        <div id="title-container">{{ with .Site.Title }}<a href="{{ $url }}"> {{ . }} </a>{{ end }}</div>
         <div id="custom-header-outer">
           <div id="custom-header-container">
             {{ partial "custom-header.html" . }}
@@ -93,7 +94,7 @@
     <footer>
       <a
         {{ with .Site.Params.navlinks }} {{ range . }} {{ if .imprint }} href="{{ .url | absURL }}" {{ end }} {{ end }} {{ end }}
-        >{{ with .Site.Params.copyright }} {{ . }} {{ end }}</a
+        >© {{ now.Year }}{{ with .Site.Params.copyright }} {{ . }} {{ end }}</a
       >
     </footer>
     <!-- End Document
