@@ -1,25 +1,63 @@
 {{ define "main" }}
-<div class="grid-container">
-  {{ range (.Pages.ByParam "year").Reverse }}
-  <div class="project-container{{if .Draft}} draft{{end}}">
-    <div class="grid-image-container">
-      <a href="{{ .Permalink }}">
-        <b>{{ .Params.title }}</b>
-      </a>
-      <a class="grid-image-overlay" href="{{ .Permalink }}">
-        {{ $imgURL := absURL "" }} 
-        {{ if strings.Contains .Params.image "https"}}
-          {{ $imgURL := .Params.image }}
-        <img src="{{ absURL $imgURL }}" class="grid-image" loading="lazy" />
-        {{else}}
-          {{ $path := printf "%s%s" "work/" .Params.image }}
-          {{ $imgURL := absURL $path }}
-        <img src="{{ absURL $imgURL }}" class="grid-image" loading="lazy" />
-        {{end}}
-      </a>
-    </div>
-    <!-- Caption -->
+  <div class="grid-container">
+    {{ range (.Pages.ByParam "year").Reverse }}
+      {{ $page := . }}
+
+      <div class="project-container{{ if .Draft }} draft{{ end }}">
+        <div class="grid-image-container">
+          <a href="{{ .RelPermalink }}">
+            <b>{{ .Title }}</b>
+          </a>
+
+          <a
+            class="grid-image-overlay"
+            href="{{ .RelPermalink }}"
+            aria-label="{{ .Title }}"
+          >
+            {{ with .Params.image }}
+              {{ $imagePath := printf "%v" . }}
+              {{ $parsedURL := urls.Parse $imagePath }}
+              {{ $alt := $page.Params.imageAlt | default $page.Title }}
+
+              {{ if $parsedURL.IsAbs }}
+                {{/* Externes Bild */}}
+                <img
+                  src="{{ $imagePath }}"
+                  class="grid-image"
+                  alt="{{ $alt }}"
+                  loading="lazy"
+                  decoding="async"
+                />
+              {{ else }}
+                {{/* Resource der übergeordneten work-Section */}}
+                {{ $resource := $page.Parent.Resources.GetMatch $imagePath }}
+
+                {{ with $resource }}
+                  {{ $image := partial "process_image.html" . }}
+                  {{ $image := $image.Resize "600x" }}
+                  <img
+                    src="{{ $image.RelPermalink }}"
+                    class="grid-image"
+                    alt="{{ $alt }}"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                {{ else }}
+                  {{ warnf "Bild %q nicht in den Resources von %q gefunden (Seite: %s)"
+                    $imagePath
+                    $page.Parent.Path
+                    $page.RelPermalink
+                  }}
+                {{ end }}
+              {{ end }}
+            {{ else }}
+              <!-- {{ warnf "Kein image-Parameter definiert (Seite: %s)" $page.RelPermalink }} -->
+            {{ end }}
+          </a>
+        </div>
+
+        <!-- Caption -->
+      </div>
+    {{ end }}
   </div>
-  {{ end }}
-</div>
 {{ end }}

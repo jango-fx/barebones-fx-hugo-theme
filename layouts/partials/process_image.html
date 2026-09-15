@@ -1,0 +1,9 @@
+{{- $image := . -}}
+{{- $subtype := $image.MediaType.SubType -}}
+
+{{- if in (slice "jpeg" "png" "tiff" "webp") $subtype -}}
+  {{ warnf "Processing Images: " $image }}
+  {{- $image = $image.Process "webp q82" -}}
+{{- end -}}
+
+{{- return $image -}}
